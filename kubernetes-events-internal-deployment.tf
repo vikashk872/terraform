@@ -1,4 +1,4 @@
-resource "kubernetes_deployment" "internal-deploymentt" {
+resource "kubernetes_deployment" "internal-deployment" {
   metadata {
     name = "internal-deployment"
     labels = {
