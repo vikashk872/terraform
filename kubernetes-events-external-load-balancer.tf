@@ -1,11 +1,11 @@
-resource "kubernetes_service" "events-external-service" {
+resource "kubernetes_service" "external-deployment-service" {
   metadata {
-    name      = "events-external-service"
+    name      = "external-deployment-service"
     namespace = kubernetes_namespace.events_ns.metadata[0].name
   }
   spec {
     selector = {
-      App = kubernetes_deployment.events-external-deployment.spec.0.template.0.metadata[0].labels.App
+      App = kubernetes_deployment.external-deployment.spec.0.template.0.metadata[0].labels.App
     }
     port {
       port        = 80
@@ -17,8 +17,8 @@ resource "kubernetes_service" "events-external-service" {
 }
 
 output "lb_ip" {
-  value = kubernetes_service.events-external-service.status.0.load_balancer.0.ingress.0.ip
+  value = kubernetes_service.external-deployment-service.status.0.load_balancer.0.ingress.0.ip
 }
 output "lb_status" {
-  value = kubernetes_service.events-external-service.status
+  value = kubernetes_service.external-deployment-service.status
 }
