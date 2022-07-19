@@ -1,8 +1,8 @@
-resource "kubernetes_deployment" "events-external-deployment" {
+resource "kubernetes_deployment" "external-deployment" {
   metadata {
-    name = "events-external-deployment"
+    name = "external-deployment"
     labels = {
-      App = "events-external"
+      App = "external-deployment"
     }
     namespace = kubernetes_namespace.events_ns.metadata[0].name
   }
@@ -12,23 +12,23 @@ resource "kubernetes_deployment" "events-external-deployment" {
     progress_deadline_seconds = 90
     selector {
       match_labels = {
-        App = "events-external"
+        App = "external-deployment"
       }
     }
     template {
       metadata {
         labels = {
-          App = "events-external"
+          App = "external-deployment"
         }
       }
       spec {
         container {
           image = "${var.container_registry}/${var.external_image_name}"
-          name  = "events-external"
+          name  = "external-deployment"
 
           env {
             name  = "SERVER"
-            value = "http://events-internal-service:8082"
+            value = "http://external-deployment:8082"
           }
           port {
             container_port = 8080
