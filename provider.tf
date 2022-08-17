@@ -16,7 +16,7 @@ terraform {
 
 
 provider "google" {
-  credentials = file("/home/vikashk872/terraform/gcp_key.json")
+  credentials = file("/home/vikashk872/terraform/capstone.json")
   project = var.project_id
   region  = var.gcp_region_1
   zone    = var.gcp_zone_1

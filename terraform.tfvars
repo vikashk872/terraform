@@ -1,5 +1,5 @@
 # GCP Settings
-project_id          = "inbound-analogy-355606" # Enter your project ID here.
+project_id          = "capstone-355612" # Enter your project ID here.
 container_registry  = "vikashk872"
 external_image_name = "external:latest"
 internal_image_name = "internal:latest"
